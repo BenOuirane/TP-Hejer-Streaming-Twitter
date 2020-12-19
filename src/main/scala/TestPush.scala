@@ -67,7 +67,7 @@ object TestPush {
 
     val putRecordsRequest = new PutRecordsRequest
     putRecordsRequest.setStreamName("tf-teraform-kinesis-kinesis-stream")
- //  val putRecordsRequestEntryList = new util.ArrayList[PutRecordsRequestEntry]
+   val putRecordsRequestEntryList = new util.ArrayList[PutRecordsRequestEntry]
     englishTweets.foreachRDD { rdd =>
       rdd.foreach { s =>
         val putRecordsRequestEntry = new PutRecordsRequestEntry
@@ -83,7 +83,7 @@ object TestPush {
       }
     }
 
-  // putRecordsRequest.setRecords(putRecordsRequestEntryList)
+   putRecordsRequest.setRecords(putRecordsRequestEntryList)
     val putRecordsResult: PutRecordsResult = kinesisClient.putRecords(putRecordsRequest)
     System.out.println("Put Result" + putRecordsResult)
 
